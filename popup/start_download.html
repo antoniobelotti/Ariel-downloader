@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <div class="header" id="header">
+        <span>Ariel Downloader</span>
+    </div>
+
+    <div class="row">
+        <div class="column" id="document_download_trigger">
+            <img src="res/documents.svg" height="30vh" width="30vw">
+            <span class="option">Download documents</span>
+        </div>
+        <div class="column" id="video_download_trigger">
+            <img src="res/videocam.svg" height="30vh" width="30vw">
+            <span class="option">Download lectures</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column" id="error_content" hidden>
+            <span>Only works on Ariel</span>
+        </div>
+    </div>
+
+    <div class="row" id="progress_bar_div" hidden>
+        <div class="column">
+            <progress id="progress_bar" value="0" max="100"></progress>
+        </div>
+    </div>
+
+    <div class="row" id="error_container" hidden>
+        <div class="column">
+            <p id="error_txt"></p>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

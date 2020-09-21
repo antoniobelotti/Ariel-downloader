@@ -1,0 +1,39 @@
+{
+    "manifest_version": 2,
+    "name": "ariel_document_downloader",
+    "version": "2.0",
+
+    "description": "Download material from an ariel (unimi) site",
+    "short_name": "Ariel Document Downloader",
+
+    "icons": {
+        "16": "icons/icon16.ico",
+        "32": "icons/icon32.ico",
+        "48": "icons/icon48.ico",
+        "128": "icons/icon128.ico"
+    },
+
+    "permissions": [
+        "downloads",
+        "downloads.open",
+        "activeTab"
+    ],
+
+    "browser_action": {
+        "default_icon": "icons/icon.png",
+        "default_title": "Ariel Downloader",
+        "default_popup": "popup/start_download.html",
+        "browser_style": true
+    },
+
+    "content_scripts": [{
+        "matches": ["*://*.ariel.ctu.unimi.it/*"],
+        "js": ["content_script.js"]
+    }],
+
+    "background": {
+        "scripts": ["background_script.js"]
+    },
+
+    "offline_enabled": false
+}
