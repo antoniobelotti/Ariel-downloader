@@ -38,19 +38,28 @@ function extract_documents_links() {
 }
 
 function extract_video_links() {
-    var all_links = document.getElementsByTagName("source");
+    var result = [];
 
-    downloads_list = []
-    for (let i = 0; i < all_links.length; i++) {
-
-        let video_url = all_links[i].src;
-        video_name = video_url.split("/")
-        video_name = video_name[video_name.length - 1]
-
-        downloads_list.push({
-            url: video_url,
-            filename: video_name
-        });
+    var thread_body = document.getElementsByTagName("tbody");
+    var elements = thread_body[0].children;
+    for (let i = 0; i < elements.length; i++) {
+        var video_title = elements[i].getElementsByTagName("span")[1].innerText;
+        var all_videos = elements[i].getElementsByTagName("source");
+        for (let j = 0; j < all_videos.length; j++) {
+            var video_url = all_videos[j].src;
+            var url_parts = video_url.split(".");
+            var video_extension = url_parts[url_parts.length - 1];
+            var filename = ""
+            if (j > 0) {
+                filename = video_title + "_" + j + "." + video_extension
+            } else {
+                filename = video_title + "." + video_extension
+            }
+            result.push({
+                url: video_url,
+                filename: filename
+            });
+        }
     }
-    return downloads_list
+    return result
 }
