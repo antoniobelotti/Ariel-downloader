@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener(
             chrome.downloads.download({
                 saveAs: false,
                 url: request[idx].url,
-                conflictAction: 'uniquify',
+                conflictAction: 'overwrite',
                 filename: request[idx].filename
             }, (dl_item_id) => {
                 if (dl_item_id == undefined) {
